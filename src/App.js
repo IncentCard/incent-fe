@@ -8,6 +8,7 @@ import PageWrapper from 'components/PageWrapper';
 import configureStore from 'utils/configureStore';
 import getHistory from 'utils/getHistory';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css';
 
 const store = configureStore({});
