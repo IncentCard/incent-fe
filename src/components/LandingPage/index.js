@@ -17,6 +17,10 @@ class LandingPage extends Component {
         <h2>Redux Counter</h2>
         <p>The current counter value: {this.props.counter}</p>
         <Button onClick={this.props.incrementCounter}>Increment</Button>
+      </Container>,
+      <Container>
+        <h2>Marqeta</h2>
+        <Button onClick={this.props.pingMarqeta}>Ping</Button>
       </Container>
     ];
   }
