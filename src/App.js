@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import LandingPageContainer from 'containers/LandingPage';
+import LoginPageContainer from 'containers/LoginPage';
 import PageWrapper from 'components/PageWrapper';
 import configureStore from 'utils/configureStore';
 import getHistory from 'utils/getHistory';
@@ -19,6 +20,7 @@ function App() {
       <ConnectedRouter history={getHistory()}>
         <PageWrapper>
           <Route exact path="/" component={LandingPageContainer}/>
+          <Route exact path="/login" component={LoginPageContainer}/>
         </PageWrapper>
       </ConnectedRouter>
     </Provider>

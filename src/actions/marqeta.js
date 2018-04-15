@@ -1,24 +1,36 @@
 import * as types from 'constants/actionTypes';
 import makeAPIAction from 'utils/makeAPIAction';
+import { MARQETA_BASE_URL } from 'constants/urls';
 
 export function pingMarqeta() {
   return makeAPIAction(types.PING_MARQETA, {
-    endpoint: 'https://shared-sandbox-api.marqeta.com/v3/ping',
+    endpoint: `${MARQETA_BASE_URL}/ping`,
   })
 }
 
 export function getUser(id) {
   return makeAPIAction(types.MARQETA_GET_USER, {
-    endpoint: `https://shared-sandbox-api.marqeta.com/v3/users/${id}`,
+    endpoint: `${MARQETA_BASE_URL}/users/${id}`,
   })
+}
+
+export function login(email, password) {
+  return makeAPIAction(types.MARQETA_LOGIN, {
+    endpoint: `${MARQETA_BASE_URL}/users/auth/login`,
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
 }
 
 export function pingThenGetUser(id) {
   return (dispatch) => {
     console.log('start ping then get');
-    dispatch(pingMarqeta()).then(() => {
+     return dispatch(pingMarqeta()).then(() => {
       console.log('after ping');
-      dispatch(getUser(id));
-    })
+       return dispatch(getUser(id));
+    });
   }
 }

@@ -1,5 +1,8 @@
 import { RSAA } from 'redux-api-middleware';
 import { Base64 } from 'js-base64';
+import get from 'lodash/get';
+
+import { MARQETA_APP_TOKEN } from 'constants/marqetaAppTokens';
 
 function makeTypes(type) {
   return [
@@ -9,15 +12,24 @@ function makeTypes(type) {
   ];
 }
 
+function makeAuthorizationHeader(state) {
+  const authToken = get(state.marqeta.login, 'access_token.token', '');
+
+  return 'Basic ' + Base64.encode(
+    `${MARQETA_APP_TOKEN}:${authToken}`
+  );
+}
+
 export default function makeAPIAction(type, options) {
   return {
     [RSAA]: {
       method: 'GET',
       types: makeTypes(type),
-      headers: {
-        'Authorization': 'Basic ' + Base64.encode(
-          'user29801522987366:e743de98-88c8-41a9-9343-6e6c4f5729ab'
-        ),
+      headers: (state) => {
+        return {
+          'Authorization': makeAuthorizationHeader(state),
+          'content-type': 'application/json',
+        };
       },
       ...options,
     }

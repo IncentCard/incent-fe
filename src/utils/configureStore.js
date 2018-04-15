@@ -6,11 +6,13 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 
 import counterReducer from 'reducers/counter';
+import marqetaReducer from 'reducers/marqeta';
 import getHistory from 'utils/getHistory';
 
 const reducer = combineReducers({
   counter: counterReducer,
   router: routerReducer,
+  marqeta: marqetaReducer,
 });
 
 const logger = createLogger({
