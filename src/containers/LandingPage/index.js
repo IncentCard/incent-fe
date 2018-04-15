@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
 import { incrementCounter } from 'actions/counter';
-import { pingMarqeta } from 'actions/marqeta';
+import { pingMarqeta, getUser, pingThenGetUser } from 'actions/marqeta';
 import LandingPageComponent from 'components/LandingPage';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,6 +15,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({
     incrementCounter,
     pingMarqeta,
+    getUser,
+    pingThenGetUser,
   }, dispatch);
 }
 

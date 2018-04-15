@@ -5,6 +5,11 @@ import vincent from 'assets/vincent.png';
 import './index.css';
 
 class LandingPage extends Component {
+  handleGetUser() {
+    const result = this.props.pingThenGetUser('2b02a7eb-799c-4621-8622-df722bf2e8dd');
+    console.log('result', result);
+  }
+
   render() {
     return [
       <Jumbotron>
@@ -21,6 +26,7 @@ class LandingPage extends Component {
       <Container>
         <h2>Marqeta</h2>
         <Button onClick={this.props.pingMarqeta}>Ping</Button>
+        <Button onClick={this.handleGetUser.bind(this)}>get user</Button>
       </Container>
     ];
   }

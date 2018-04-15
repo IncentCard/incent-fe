@@ -3,6 +3,7 @@ import { apiMiddleware } from 'redux-api-middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
+import thunk from 'redux-thunk';
 
 import counterReducer from 'reducers/counter';
 import getHistory from 'utils/getHistory';
@@ -20,6 +21,7 @@ const router = routerMiddleware(getHistory())
 
 
 const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(
+  thunk,
   apiMiddleware,
   router,
   logger,
