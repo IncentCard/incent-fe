@@ -4,16 +4,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk';
 
 import counterReducer from 'reducers/counter';
 import marqetaReducer from 'reducers/marqeta';
 import getHistory from 'utils/getHistory';
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  whitelist: ['login'],
+};
+
 const reducer = combineReducers({
   counter: counterReducer,
   router: routerReducer,
-  marqeta: marqetaReducer,
+  marqeta: persistReducer(persistConfig, marqetaReducer),
 
   // External
   form: formReducer,
@@ -34,5 +42,7 @@ const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(
 ))(createStore);
 
 export default function configureStore(initialState) {
-  return createStoreWithMiddleware(reducer, initialState);
+  const store = createStoreWithMiddleware(reducer, initialState);
+  const persistor = persistStore(store);
+  return { store, persistor };
 }

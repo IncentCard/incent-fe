@@ -14,6 +14,12 @@ export function getUser(id) {
   })
 }
 
+export function getBalances(id) {
+  return makeAPIAction(types.MARQETA_GET_BALANCES, {
+    endpoint: `${MARQETA_BASE_URL}/balances/${id}`,
+  })
+}
+
 export function login(email, password) {
   return makeAPIAction(types.MARQETA_LOGIN, {
     endpoint: `${MARQETA_BASE_URL}/users/auth/login`,

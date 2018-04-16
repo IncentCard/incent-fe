@@ -11,8 +11,9 @@ class LandingPage extends Component {
 
     return result.then((result) => {
       if (!result.error) {
-        this.props.push('/');
+        this.props.push('/dashboard');
       } else {
+        // TODO: Actually check error code
         throw new SubmissionError({
           password: 'Wrong password',
           _error: 'Login failed!'

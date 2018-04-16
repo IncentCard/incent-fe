@@ -4,14 +4,14 @@ const initialState = {}
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case `${types.MARQETA_LOGIN}_REQUEST`:
+    case `${types.MARQETA_GET_BALANCES}_REQUEST`:
       return { loaded: false };
-    case `${types.MARQETA_LOGIN}_FAILURE`:
+    case `${types.MARQETA_GET_BALANCES}_FAILURE`:
       return {
         loaded: true,
         error: {...action.payload},
       };
-    case `${types.MARQETA_LOGIN}_RECEIVED`:
+    case `${types.MARQETA_GET_BALANCES}_RECEIVED`:
       return {
         ...action.payload,
         loaded: true,
