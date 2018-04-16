@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { SubmissionError } from 'redux-form'
 
 import LoginForm from './loginForm';
@@ -23,18 +23,26 @@ class LandingPage extends Component {
   }
 
   render() {
-    return [
+    return (
       <Container>
-        <h2>Login</h2>
-        <p>
-          Here's a user I made earlier:<br />
-          Email: <code>example2@example.com</code><br />
-          Password: <code>asdfASDF1234_</code>
-        </p>
+        <Row className="mt-5">
+          <Col sm={{ size: 8, offset: 2 }}>
+            <Card>
+              <CardBody>
+                <h2>Login</h2>
+                <p>
+                  Here's a user I made earlier:<br />
+                  Email: <code>example2@example.com</code><br />
+                  Password: <code>asdfASDF1234_</code>
+                </p>
 
-        <LoginForm onSubmit={ this.handleLogin.bind(this) } />
+                <LoginForm onSubmit={ this.handleLogin.bind(this) } />
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
       </Container>
-    ];
+    );
   }
 }
 

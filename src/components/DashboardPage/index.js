@@ -5,7 +5,7 @@ import { map } from 'lodash';
 class DashboardPage extends Component {
   renderBalance(data, currency) {
     return (
-      <p>
+      <p key={currency}>
         <strong>Currency:</strong> {currency}<br />
         <strong>Available balance:</strong> {data.available_balance}
       </p>
@@ -13,12 +13,12 @@ class DashboardPage extends Component {
   }
 
   render() {
-    return [
-      <Container>
+    return (
+      <Container className="mt-5">
         <h2>Dashboard</h2>
         { map(this.props.balances.gpa.balances, this.renderBalance) }
-      </Container>,
-    ];
+      </Container>
+    );
   }
 }
 
