@@ -7,7 +7,6 @@ import LoginForm from './loginForm';
 class LandingPage extends Component {
   handleLogin({ email, password }) {
     const result = this.props.login(email, password);
-    console.log('result', result);
 
     return result.then((result) => {
       if (!result.error) {

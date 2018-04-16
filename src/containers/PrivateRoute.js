@@ -7,13 +7,10 @@ import {
 import { connect } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, accessToken, ...rest }) => {
-  console.log("Render route", Component, accessToken);
-
   return (
     <Route
       {...rest}
       render={props =>{
-        console.log("Render contents", Component, accessToken)
         return accessToken ? (
           <Component {...props} />
         ) : (

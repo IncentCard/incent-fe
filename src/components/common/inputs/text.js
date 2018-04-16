@@ -32,7 +32,6 @@ class TextInput extends Component {
       type,
     } = this.props;
 
-    console.log(this.props);
     return (
       <FormGroup>
         <Label for={this.state.inputId}>{label}</Label>
