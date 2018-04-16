@@ -26,8 +26,8 @@ class LandingPage extends Component {
         </Container>
         <Container>
           <h2>Marqeta</h2>
-          <Button onClick={this.props.pingMarqeta}>Ping</Button>
-          <Button onClick={this.handleGetUser.bind(this)}>get user</Button>
+          <Button onClick={this.props.pingMarqeta}>Ping</Button><br />
+          <Button onClick={this.handleGetUser.bind(this)}>ping then get user</Button>
         </Container>
       </div>
     );

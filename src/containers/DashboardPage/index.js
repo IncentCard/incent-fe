@@ -6,8 +6,6 @@ import { pingMarqeta, getBalances } from 'actions/marqeta';
 import DashboardPageComponent from 'components/DashboardPage';
 import LoadingWrapper from 'components/common/LoadingWrapper';
 
-
-
 class DashboardPageContainer extends Component {
   loadData() {
     this.props.getBalances(this.props.currentUser.token);

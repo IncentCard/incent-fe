@@ -12,6 +12,8 @@ import counterReducer from 'reducers/counter';
 import marqetaReducer from 'reducers/marqeta';
 import getHistory from 'utils/getHistory';
 
+// Reducers
+
 const persistConfig = {
   key: 'root',
   storage: storage,
@@ -20,19 +22,20 @@ const persistConfig = {
 
 const reducer = combineReducers({
   counter: counterReducer,
-  router: routerReducer,
   marqeta: persistReducer(persistConfig, marqetaReducer),
 
   // External
+  router: routerReducer,
   form: formReducer,
 });
+
+// Middleware
 
 const logger = createLogger({
   collapsed: true,
 });
 
-const router = routerMiddleware(getHistory())
-
+const router = routerMiddleware(getHistory());
 
 const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(
   thunk,
